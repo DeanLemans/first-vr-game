@@ -88,7 +88,19 @@ collision_mask = 17
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0aslw")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "cheese test"
+[node name="UI" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225755, -0.471179)
+
+[node name="Label3D2" type="Label3D" parent="UI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00546765, 0.45151, -0.474823)
+text = "Welcome to mars
+
+some dude is trying to kill you"
+font_size = 21
+
+[node name="Label3D" type="Label3D" parent="UI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225755, -2.07748)
+text = "cheese test
+either fight or escape
+
+GO FORTH CRACKHEAD!"
