@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpqsjw2xcc8gl"]
+[gd_scene load_steps=9 format=3 uid="uid://cpqsjw2xcc8gl"]
 
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="1_pbqoy"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_27xve"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_8610c"]
 [ext_resource type="PackedScene" uid="uid://c78tjrtiyqna8" path="res://addons/godot-xr-tools/functions/movement_grapple.tscn" id="4_np0ly"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_5dh8l"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="5_fxhha"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="6_jkb5u"]
 
 [node name="XROrigin3D" type="XROrigin3D"]
@@ -19,15 +20,10 @@ tracker = &"left_hand"
 
 [node name="LeftHand" parent="LeftHand" instance=ExtResource("1_pbqoy")]
 
-[node name="FunctionPickup" parent="LeftHand/LeftHand" instance=ExtResource("2_27xve")]
-
-[node name="MovementGrapple" parent="LeftHand" instance=ExtResource("4_np0ly")]
-grapple_length = 20.0
-impulse_speed = 5.0
-winch_speed = 1.0
-
 [node name="MovementDirect" parent="LeftHand" instance=ExtResource("4_8610c")]
 strafe = true
+
+[node name="FunctionPickup" parent="LeftHand" instance=ExtResource("2_27xve")]
 
 [node name="RightHand" type="XRController3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, 0)
@@ -35,14 +31,24 @@ tracker = &"right_hand"
 
 [node name="RightHand" parent="RightHand" instance=ExtResource("2_h8mha")]
 
-[node name="FunctionPickup" parent="RightHand/RightHand" instance=ExtResource("2_27xve")]
-
 [node name="MovementGrapple" parent="RightHand" instance=ExtResource("4_np0ly")]
-grapple_length = 20.0
-impulse_speed = 5.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0376669, 0.1)
+impulse_speed = 3.0
 winch_speed = 1.0
 
 [node name="MovementTurn" parent="RightHand" instance=ExtResource("6_jkb5u")]
 order = 10
+turn_mode = 1
+step_turn_delay = 0.15
+step_turn_angle = 15.0
+
+[node name="MovementJump" parent="RightHand" instance=ExtResource("5_fxhha")]
+jump_button_action = "ax_button"
+
+[node name="FunctionPickup" parent="RightHand" instance=ExtResource("2_27xve")]
 
 [node name="PlayerBody" parent="." instance=ExtResource("5_5dh8l")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+player_height_min = 0.1
+player_height_max = 0.5
+player_height_rate = 1.0
