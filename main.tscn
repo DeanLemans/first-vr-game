@@ -100,7 +100,13 @@ font_size = 21
 
 [node name="Label3D" type="Label3D" parent="UI"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225755, -2.07748)
-text = "cheese test
-either fight or escape
+text = "either fight or escape
 
 GO FORTH CRACKHEAD!"
+
+[node name="Label3D3" type="Label3D" parent="UI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.361102, 0)
+text = "brainstorm:
+
+swing around with grapple hook and
+ kill enemys with sword(no guns)"
