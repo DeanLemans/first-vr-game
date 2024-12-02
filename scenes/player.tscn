@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="5_fxhha"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="6_jkb5u"]
 
-[node name="XROrigin3D" type="XROrigin3D"]
+[node name="Player" type="XROrigin3D" groups=["player_body"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="."]
