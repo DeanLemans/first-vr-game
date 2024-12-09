@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpqsjw2xcc8gl"]
+[gd_scene load_steps=10 format=3 uid="uid://cpqsjw2xcc8gl"]
 
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="1_pbqoy"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_27xve"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_5dh8l"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="5_fxhha"]
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="6_jkb5u"]
+[ext_resource type="PackedScene" uid="uid://bjcxf427un2wp" path="res://addons/godot-xr-tools/player/poke/poke.tscn" id="8_ov6vj"]
 
 [node name="Player" type="XROrigin3D" groups=["player_body"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
@@ -46,6 +47,8 @@ step_turn_angle = 15.0
 jump_button_action = "ax_button"
 
 [node name="FunctionPickup" parent="RightHand" instance=ExtResource("2_27xve")]
+
+[node name="Poke" parent="RightHand" instance=ExtResource("8_ov6vj")]
 
 [node name="PlayerBody" parent="." instance=ExtResource("5_5dh8l")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
