@@ -32,6 +32,7 @@ tonemap_mode = 2
 size = Vector3(1, 0.5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_43sph"]
+size = Vector3(1, 10, 10)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kqclh"]
 size = Vector2(5, 5)
@@ -45,7 +46,7 @@ size = Vector3(15, 1, 20)
 [node name="main" type="Node3D"]
 
 [node name="PickableObject" parent="." instance=ExtResource("1_lh74o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.336525, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01025, 0.336525, 0)
 picked_up_layer = 65540
 release_mode = 0
 ranged_grab_method = 2
@@ -62,9 +63,6 @@ shadow_enabled = true
 shadow_opacity = 0.75
 
 [node name="StartXR" parent="." instance=ExtResource("3_54cko")]
-
-[node name="XROrigin3D" parent="." instance=ExtResource("4_bu5rb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997742, 0)
 
 [node name="grappleThing1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60517, 2.81423, -5.11847)
@@ -139,3 +137,7 @@ shape = SubResource("BoxShape3D_m8ia3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.088, 0.317078, 0)
 
 [node name="PushButton" parent="." instance=ExtResource("6_xgrle")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52898, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("4_bu5rb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664697, 0)
