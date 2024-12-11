@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cpqsjw2xcc8gl" path="res://scenes/player.tscn" id="4_bu5rb"]
 [ext_resource type="PackedScene" uid="uid://dikiirt45lnih" path="res://sword.tscn" id="5_163go"]
 [ext_resource type="PackedScene" uid="uid://dbv1hvxufc1al" path="res://scenes/push_button.tscn" id="6_xgrle"]
-[ext_resource type="Script" path="res://scenes/path_follow_3d.gd" id="7_b788u"]
-[ext_resource type="PackedScene" uid="uid://caf80o7kalytb" path="res://scenes/enemy.tscn" id="7_hxdng"]
+[ext_resource type="Script" path="res://scripts/path_follow_3d.gd" id="7_b788u"]
+[ext_resource type="PackedScene" uid="uid://d2akyrwn8wisi" path="res://scenes/enemy_2.tscn" id="9_yqji3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1bamh"]
 shader = ExtResource("2_10auy")
@@ -112,25 +112,9 @@ shape = SubResource("ConcavePolygonShape3D_0aslw")
 [node name="UI" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225755, -0.471179)
 
-[node name="Label3D2" type="Label3D" parent="UI"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00546765, 0.45151, -0.474823)
-text = "Welcome to mars
-
-some dude is trying to kill you"
-font_size = 21
-
 [node name="Label3D" type="Label3D" parent="UI"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.225755, -2.07748)
-text = "either fight or escape
-
-GO FORTH CRACKHEAD!"
-
-[node name="Label3D3" type="Label3D" parent="UI"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.361102, 0)
-text = "brainstorm:
-
-swing around with grapple hook and
- kill enemys with sword(no guns)"
+text = "avoid the beans and get to the end"
 
 [node name="floor2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.2619)
@@ -163,8 +147,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01025, 0.336525, -8.78177)
 curve = SubResource("Curve3D_oec8t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.00264397, 1.93026e-05, -0.999991, 0, 1, 1.93026e-05, 0.999991, 5.1036e-08, -0.00264397, -0.560685, -0.015055, 1.05327)
+transform = Transform3D(-0.00264456, 1.93258e-05, -0.99999, -9.09489e-13, 1, 1.93258e-05, 0.99999, 5.11097e-08, -0.00264456, -0.560685, -0.015055, 1.05327)
 script = ExtResource("7_b788u")
 
-[node name="enemy" parent="Path3D/PathFollow3D" instance=ExtResource("7_hxdng")]
-transform = Transform3D(0.3, 0, -5.82077e-11, 0, 0.3, -4.63636e-13, 5.82077e-11, -9.04138e-15, 0.3, 0, 0.286905, 5.60284e-06)
+[node name="enemy2" parent="Path3D/PathFollow3D" instance=ExtResource("9_yqji3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, -1.6611e-13, 0, -1.66929e-13, 0.5, 0, 0.522449, 1.01328e-05)
+
+[connection signal="body_entered" from="Path3D/PathFollow3D/enemy2" to="." method="_on_enemy_2_body_entered"]
