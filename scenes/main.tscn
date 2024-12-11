@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bbuxqykhqie0j"]
+[gd_scene load_steps=22 format=3 uid="uid://bbuxqykhqie0j"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_c3733"]
 [ext_resource type="PackedScene" uid="uid://bptevpddvxpy7" path="res://scenes/cube.tscn" id="1_lh74o"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dbv1hvxufc1al" path="res://scenes/push_button.tscn" id="6_xgrle"]
 [ext_resource type="Script" path="res://scripts/path_follow_3d.gd" id="7_b788u"]
 [ext_resource type="PackedScene" uid="uid://d2akyrwn8wisi" path="res://scenes/enemy_2.tscn" id="9_yqji3"]
+[ext_resource type="PackedScene" uid="uid://caf80o7kalytb" path="res://scenes/enemy.tscn" id="10_wkrjc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1bamh"]
 shader = ExtResource("2_10auy")
@@ -147,10 +148,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01025, 0.336525, -8.78177)
 curve = SubResource("Curve3D_oec8t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.00264456, 1.93258e-05, -0.99999, -9.09489e-13, 1, 1.93258e-05, 0.99999, 5.11097e-08, -0.00264456, -0.560685, -0.015055, 1.05327)
+transform = Transform3D(-0.00264456, 1.93258e-05, -0.99999, -9.09489e-13, 1, 1.93257e-05, 0.99999, 5.11097e-08, -0.00264456, -0.560685, -0.015055, 1.05327)
 script = ExtResource("7_b788u")
 
 [node name="enemy2" parent="Path3D/PathFollow3D" instance=ExtResource("9_yqji3")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, -1.6611e-13, 0, -1.66929e-13, 0.5, 0, 0.522449, 1.01328e-05)
 
+[node name="enemy" parent="Path3D/PathFollow3D" instance=ExtResource("10_wkrjc")]
+transform = Transform3D(0.3, 0, 1.74623e-10, 1.77636e-15, 0.3, -1.44058e-12, -1.74623e-10, 1.28735e-12, 0.3, -2.24584, 0.415051, 0.00594723)
+
 [connection signal="body_entered" from="Path3D/PathFollow3D/enemy2" to="." method="_on_enemy_2_body_entered"]
+[connection signal="body_entered" from="Path3D/PathFollow3D/enemy2" to="Player" method="_on_enemy_2_body_entered"]
