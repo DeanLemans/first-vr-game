@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmmdyj574hkq1"]
+
+[ext_resource type="Script" path="res://scripts/playerc.gd" id="1_d31c7"]
+[ext_resource type="PackedScene" uid="uid://bbvciliw3xnf6" path="res://scenes/black_out.tscn" id="2_ecfc5"]
+[ext_resource type="PackedScene" uid="uid://hpr0v012ghsb" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_tac_glove.tscn" id="3_jo5ja"]
+[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="5_3dbea"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="9_a1crk"]
+[ext_resource type="PackedScene" uid="uid://bjcxf427un2wp" path="res://addons/godot-xr-tools/player/poke/poke.tscn" id="10_opo30"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="11_tu20t"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xe2ly"]
+
+[node name="playerc" type="CharacterBody3D"]
+script = ExtResource("1_d31c7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_xe2ly")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.1)
+far = 1000.0
+
+[node name="Neck" type="Node3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0.1)
+
+[node name="BlackOut" parent="XROrigin3D/XRCamera3D" instance=ExtResource("2_ecfc5")]
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0)
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XROrigin3D/LeftHand" instance=ExtResource("3_jo5ja")]
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0, 0)
+tracker = &"right_hand"
+
+[node name="Poke" parent="XROrigin3D/RightHand" instance=ExtResource("10_opo30")]
+
+[node name="RightHand" parent="XROrigin3D/RightHand" instance=ExtResource("5_3dbea")]
+
+[node name="MovementJump" parent="XROrigin3D/RightHand" instance=ExtResource("9_a1crk")]
+
+[node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("11_tu20t")]

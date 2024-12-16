@@ -5,7 +5,7 @@
 [ext_resource type="Shader" path="res://skyshader.gdshader" id="2_10auy"]
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="3_54cko"]
 [ext_resource type="PackedScene" uid="uid://cpqsjw2xcc8gl" path="res://scenes/player.tscn" id="4_bu5rb"]
-[ext_resource type="PackedScene" uid="uid://dikiirt45lnih" path="res://sword.tscn" id="5_163go"]
+[ext_resource type="PackedScene" uid="uid://dikiirt45lnih" path="res://scenes/sword.tscn" id="5_163go"]
 [ext_resource type="PackedScene" uid="uid://dbv1hvxufc1al" path="res://scenes/push_button.tscn" id="6_xgrle"]
 [ext_resource type="Script" path="res://scripts/path_follow_3d.gd" id="7_b788u"]
 [ext_resource type="PackedScene" uid="uid://d2akyrwn8wisi" path="res://scenes/enemy_2.tscn" id="9_yqji3"]
@@ -140,22 +140,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.088, 0.317078, 0)
 [node name="PushButton" parent="." instance=ExtResource("6_xgrle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52898, 0, 0)
 
-[node name="Player" parent="." instance=ExtResource("4_bu5rb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664697, 0)
-
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01025, 0.336525, -8.78177)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01025, 0.295069, -8.78177)
 curve = SubResource("Curve3D_oec8t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-0.00264456, 1.93258e-05, -0.99999, -9.09489e-13, 1, 1.93257e-05, 0.99999, 5.11097e-08, -0.00264456, -0.560685, -0.015055, 1.05327)
+transform = Transform3D(-0.00264456, 1.93258e-05, -0.999989, -9.09488e-13, 1, 1.93257e-05, 0.999989, 5.11097e-08, -0.00264456, -0.560685, -0.015055, 1.05327)
 script = ExtResource("7_b788u")
 
-[node name="enemy2" parent="Path3D/PathFollow3D" instance=ExtResource("9_yqji3")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, -1.6611e-13, 0, -1.66929e-13, 0.5, 0, 0.522449, 1.01328e-05)
+[node name="enemy2" parent="Path3D/PathFollow3D" groups=["player_body"] instance=ExtResource("9_yqji3")]
+transform = Transform3D(0.5, 0, 0, 1.77636e-15, 0.5, -2.7877e-13, 0, -2.7979e-13, 0.5, 0, 0.494964, 9.65595e-06)
+visible = false
+disable_mode = 2
 
 [node name="enemy" parent="Path3D/PathFollow3D" instance=ExtResource("10_wkrjc")]
-transform = Transform3D(0.3, 0, 1.74623e-10, 1.77636e-15, 0.3, -1.44058e-12, -1.74623e-10, 1.28735e-12, 0.3, -2.24584, 0.415051, 0.00594723)
+transform = Transform3D(0.3, 0, -2.91038e-10, -3.55271e-15, 0.3, -7.63278e-14, 2.91038e-10, -7.6928e-14, 0.3, 0, 0.277864, 5.36442e-06)
 
-[connection signal="body_entered" from="Path3D/PathFollow3D/enemy2" to="." method="_on_enemy_2_body_entered"]
-[connection signal="body_entered" from="Path3D/PathFollow3D/enemy2" to="Player" method="_on_enemy_2_body_entered"]
+[node name="Player" parent="." instance=ExtResource("4_bu5rb")]
